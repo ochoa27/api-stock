@@ -31,7 +31,7 @@ public class CategoryController {
         return ResponseEntity.ok(new CategoryDTO(CategoryMapper.toEntity(category)));
     }
 
-//    @PutMapping
+//    @PutMappingcoomit
 //    @Transactional
 //    public ResponseEntity updateCategory(@RequestBody @Valid UpdateDateCategoryDTO date){
 //        var category=repository.getReferenceById(date.id());
