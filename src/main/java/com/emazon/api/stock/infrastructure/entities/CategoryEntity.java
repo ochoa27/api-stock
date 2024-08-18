@@ -1,7 +1,7 @@
-package com.emazon.api.stock.secondadapters.entiites;
+package com.emazon.api.stock.infrastructure.entities;
 
-import com.emazon.api.stock.adapters.dto.category.Categoryregister;
-import com.emazon.api.stock.adapters.dto.category.UpdateDateCategory;
+import com.emazon.api.stock.aplication.dto.category.Categoryregister;
+import com.emazon.api.stock.aplication.dto.category.UpdateDateCategory;
 import jakarta.persistence.*;
 import lombok.*;
 

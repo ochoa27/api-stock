@@ -1,10 +1,10 @@
-package com.emazon.api.stock.adapters.controller;
+package com.emazon.api.stock.infrastructure.controller;
 
-import com.emazon.api.stock.adapters.dto.category.CategoryDates;
-import com.emazon.api.stock.adapters.dto.category.Categoryregister;
-import com.emazon.api.stock.adapters.dto.category.UpdateDateCategory;
-import com.emazon.api.stock.secondadapters.entiites.CategoryEntity;
-import com.emazon.api.stock.secondadapters.repository.ICategoryRepositrory;
+import com.emazon.api.stock.aplication.dto.category.CategoryDates;
+import com.emazon.api.stock.aplication.dto.category.Categoryregister;
+import com.emazon.api.stock.aplication.dto.category.UpdateDateCategory;
+import com.emazon.api.stock.infrastructure.entities.CategoryEntity;
+import com.emazon.api.stock.infrastructure.repository.ICategoryRepositrory;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
