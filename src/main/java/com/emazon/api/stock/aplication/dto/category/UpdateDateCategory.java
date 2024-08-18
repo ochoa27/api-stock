@@ -1,4 +1,4 @@
-package com.emazon.api.stock.adapters.dto.category;
+package com.emazon.api.stock.aplication.dto.category;
 
 
 import jakarta.validation.constraints.NotNull;
