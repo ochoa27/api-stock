@@ -25,11 +25,11 @@ public class CategoryController {
         return  ResponseEntity.ok(category);
     }
 
-    @GetMapping("/obtCategory/{id}")
-    public ResponseEntity<CategoryDTO> performAction(@PathVariable Long id) {
-        var category=iCategoryHandler.getReferenceById(id);
-        return ResponseEntity.ok(new CategoryDTO(CategoryMapper.toEntity(category)));
-    }
+//    @GetMapping("/obtCategory/{id}")
+//    public ResponseEntity<CategoryDTO> performAction(@PathVariable Long id) {
+//        var category=iCategoryHandler.getReferenceById(id);
+//        return ResponseEntity.ok(new CategoryDTO(CategoryMapper.toEntity(category)));
+//    }
 
 //    @PutMapping
 //    @Transactional
