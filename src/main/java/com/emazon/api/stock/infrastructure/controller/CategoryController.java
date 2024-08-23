@@ -2,6 +2,7 @@ package com.emazon.api.stock.infrastructure.controller;
 
 import com.emazon.api.stock.aplication.dto.category.CategoryDTO;
 import com.emazon.api.stock.aplication.handler.ICategoryHandler;
+import com.emazon.api.stock.infrastructure.mapper.CategoryMapper;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.transaction.Transactional;
@@ -29,11 +30,11 @@ public class CategoryController {
         return  ResponseEntity.ok(category);
     }
 
-//    @GetMapping("/obtCategory/{id}")
-//    public ResponseEntity<CategoryDTO> performAction(@PathVariable Long id) {
-//        var category=iCategoryHandler.getReferenceById(id);
-//        return ResponseEntity.ok(new CategoryDTO(CategoryMapper.toEntity(category)));
-//    }
+    @GetMapping("/obtCategory/{id}")
+    public ResponseEntity obtCategory(@PathVariable Long id) {
+        var category=iCategoryHandler.getReferenceById(id);
+        return ResponseEntity.ok(category);
+    }
 
 //    @PutMapping
 //    @Transactional

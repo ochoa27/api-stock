@@ -7,7 +7,7 @@ import com.emazon.api.stock.infrastructure.entities.CategoryEntity;
 public class CategoryMapper {
 
 
-    public static CategoryDTO toDTO(CategoryEntity categoryEntity) {
+    public static CategoryDTO entityToDTO(CategoryEntity categoryEntity) {
         if (categoryEntity == null) {
             return null;
         }
@@ -15,7 +15,7 @@ public class CategoryMapper {
         return categoryDatesDTO;
     }
 
-    public static CategoryEntity toEntity(CategoryDomain categoryDomain) {
+    public static CategoryEntity domianToEntity(CategoryDomain categoryDomain) {
         if (categoryDomain == null) {
             return null;
         }
@@ -33,5 +33,26 @@ public class CategoryMapper {
         CategoryDomain categoryDatesDTO = new CategoryDomain(categoryEntity.getId(),categoryEntity.getName(),categoryEntity.getDescription());
         return categoryDatesDTO;
     }
+
+    public static CategoryDTO domainToDTO(CategoryDomain categoryDomain) {
+        if (categoryDomain == null) {
+            return null;
+        }
+        CategoryDTO categoryDatesDTO = new CategoryDTO(categoryDomain.getId(),categoryDomain.getName(),categoryDomain.getDescription());
+        return categoryDatesDTO;
+    }
+
+    public static CategoryEntity dtoToEntity(CategoryDTO categoryDTO) {
+        if (categoryDTO == null) {
+            return null;
+        }
+        CategoryEntity categoryEntity = new CategoryEntity();
+        categoryEntity.setId(categoryDTO.id());
+        categoryEntity.setName(categoryDTO.name());
+        categoryEntity.setDescription(categoryDTO.description());
+        return categoryEntity;
+    }
+
+
 
 }

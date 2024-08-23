@@ -6,8 +6,8 @@ import com.emazon.api.stock.domain.model.CategoryDomain;
 
 public interface ICategoryServicePort {
     String  createCategory(CategoryDomain categoryDomain);
-    CategoryDTO getReferenceById(Long id);
+    CategoryDomain getReferenceById(Long id);
     CategoryDTO getReferenceByName(String name);
-//    Boolean getReferenceByName(String name);
+
 
 }

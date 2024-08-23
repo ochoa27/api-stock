@@ -91,9 +91,10 @@ public class CreateCategoryUseCase implements ICategoryServicePort {
     }
 
     @Override
-    public CategoryDTO getReferenceById(Long id) {
-//       CategoryDTO categoryDTO=new CategoryDTO(CategoryMapper.toEntity(iCategoryPerssistencePort.getReferenceById(id)));
-//        return  categoryDTO;
-        return null;
+    public CategoryDomain getReferenceById(Long id) {
+         var category= iCategoryPerssistencePort.getReferenceById(id);
+        return category;
     }
+
+
 }

@@ -14,21 +14,21 @@ public class CategoryJPAAdapter implements ICategoryPerssistencePort {
     private ICategoryRepositrory iCategoryRepositrory;
     @Override
     public String saveCategory(CategoryDomain categoryDomain) {
-        CategoryEntity categoryEntity= CategoryMapper.toEntity(categoryDomain);
+        CategoryEntity categoryEntity= CategoryMapper.domianToEntity(categoryDomain);
 //        var categoriaEntity= new CategoryEntity(categoryregisterDTO.id(),categoryregisterDTO.name(),categoryregisterDTO.description());
         iCategoryRepositrory.save(categoryEntity);
         return "La categoria se guardo en la base de datos";
     }
 
     @Override
-    public CategoryDTO getReferenceById(Long id) {
-        var category= CategoryMapper.toDTO(iCategoryRepositrory.getReferenceById(id));
-        return category;
+    public CategoryDomain getReferenceById(Long id) {
+        var category= iCategoryRepositrory.getReferenceById(id);
+        return CategoryMapper.EntitytoDomain(category);
     }
 
     @Override
     public CategoryDTO getReferenceByName(String name) {
-        var category=CategoryMapper.toDTO(iCategoryRepositrory.findByName(name));
+        var category=CategoryMapper.entityToDTO(iCategoryRepositrory.findByName(name));
         return category;
     }
 
