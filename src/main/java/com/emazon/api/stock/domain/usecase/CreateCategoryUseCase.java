@@ -7,8 +7,10 @@ import com.emazon.api.stock.domain.model.CategoryDomain;
 import com.emazon.api.stock.domain.spi.ICategoryPerssistencePort;
 import com.emazon.api.stock.domain.util.DomainConstants;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
+@NoArgsConstructor
 public class CreateCategoryUseCase implements ICategoryServicePort {
     private ICategoryPerssistencePort iCategoryPerssistencePort;
 
