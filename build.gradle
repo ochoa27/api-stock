@@ -39,6 +39,8 @@ dependencies {
 	compileOnly 'org.mapstruct:mapstruct:1.5.3.Final'
 	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.3.Final'
 	testAnnotationProcessor 'org.mapstruct:mapstruct-processor:1.5.3.Final'
+// https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-ui
+	implementation 'org.springdoc:springdoc-openapi-ui:1.7.0'
 }
 
 tasks.named('test') {

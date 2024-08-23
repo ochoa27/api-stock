@@ -14,7 +14,7 @@ public class CreateCategoryUseCase implements ICategoryServicePort {
 
 
     public Boolean verifyNameLength(CategoryDomain categoryDomain){
-        if(categoryDomain.getName().length()>50){
+        if(categoryDomain.getName().length()<1 || categoryDomain.getName().length()>50){
             System.out.println(DomainConstants.RETURN_CATEGORY_CREATED_ERROR_NAME);
             return false;
         }else {
@@ -22,7 +22,7 @@ public class CreateCategoryUseCase implements ICategoryServicePort {
         }
     }
     public Boolean verifyDescriptionLength(CategoryDomain categoryDomain) {
-        if (categoryDomain.getDescription().length() > 90) {
+        if (categoryDomain.getDescription().length() <1  || categoryDomain.getDescription().length() > 90) {
             System.out.println(DomainConstants.RETURN_CATEGORY_CREATED_ERROR_DESCRIPTION);
             return false;
         } else {
