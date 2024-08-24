@@ -2,6 +2,10 @@ package com.emazon.api.stock.domain.api;
 
 import com.emazon.api.stock.aplication.dto.category.CategoryDTO;
 import com.emazon.api.stock.domain.model.CategoryDomain;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
+import java.util.List;
 
 
 public interface ICategoryServicePort {
@@ -9,5 +13,5 @@ public interface ICategoryServicePort {
     CategoryDomain getReferenceById(Long id);
     CategoryDTO getReferenceByName(String name);
 
-
+    List<CategoryDomain> getAllCategories();
 }

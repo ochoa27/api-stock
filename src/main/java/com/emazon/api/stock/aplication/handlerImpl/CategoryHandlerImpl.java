@@ -6,9 +6,13 @@ import com.emazon.api.stock.aplication.mapper.ICategoryMapper;
 import com.emazon.api.stock.aplication.mapper.response.ICategoryResponseMapper;
 import com.emazon.api.stock.domain.api.ICategoryServicePort;
 
+import com.emazon.api.stock.domain.model.CategoryDomain;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 
 
 @Service
@@ -35,6 +39,18 @@ public class CategoryHandlerImpl implements ICategoryHandler {
         var category=iCategoryServicePort.getReferenceByName(name);
         return category;
     }
+
+    @Override
+    public List<CategoryDTO> getAllCategories() {
+        var cateriesList= iCategoryResponseMapper.categoryListDomainToCategoryListDto(iCategoryServicePort.getAllCategories());
+        return cateriesList;
+    }
+
+//    @Override
+//    public Page<CategoryDomain> findAll(Pageable paginacion) {
+//        var categoryPage=iCategoryServicePort.findAll(paginacion);
+//        return categoryPage;
+//    }
 
 
 }

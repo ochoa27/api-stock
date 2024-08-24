@@ -1,17 +1,23 @@
 package com.emazon.api.stock.infrastructure.adapter;
 
 import com.emazon.api.stock.aplication.dto.category.CategoryDTO;
+import com.emazon.api.stock.aplication.mapper.response.ICategoryResponseMapper;
 import com.emazon.api.stock.domain.model.CategoryDomain;
 import com.emazon.api.stock.domain.spi.ICategoryPerssistencePort;
 import com.emazon.api.stock.infrastructure.entities.CategoryEntity;
 import com.emazon.api.stock.infrastructure.mapper.CategoryMapper;
 import com.emazon.api.stock.infrastructure.repository.ICategoryRepositrory;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
+import java.util.List;
 
 
 @AllArgsConstructor
 public class CategoryJPAAdapter implements ICategoryPerssistencePort {
     private ICategoryRepositrory iCategoryRepositrory;
+
     @Override
     public String saveCategory(CategoryDomain categoryDomain) {
         CategoryEntity categoryEntity= CategoryMapper.domianToEntity(categoryDomain);
@@ -31,6 +37,13 @@ public class CategoryJPAAdapter implements ICategoryPerssistencePort {
         var category=CategoryMapper.entityToDTO(iCategoryRepositrory.findByName(name));
         return category;
     }
+
+    @Override
+    public List<CategoryDomain> getAllCategories() {
+        var listCategory=iCategoryRepositrory.findAll();
+        return CategoryMapper.CategoryEntityListToCategoryDomainList(listCategory);
+    }
+
 
 //        @Override
 //    public Boolean getReferenceByName(String name) {

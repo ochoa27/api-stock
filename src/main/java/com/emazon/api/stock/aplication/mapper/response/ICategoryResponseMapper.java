@@ -6,6 +6,8 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring")
 public interface ICategoryResponseMapper {
     @Mappings({
@@ -15,4 +17,5 @@ public interface ICategoryResponseMapper {
 
     })
     CategoryDTO categoryDomainToCategoryDto(CategoryDomain categoryDomain);
+    List<CategoryDTO> categoryListDomainToCategoryListDto(List<CategoryDomain> categoryDomainList);
 }

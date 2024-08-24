@@ -8,6 +8,10 @@ import com.emazon.api.stock.domain.spi.ICategoryPerssistencePort;
 import com.emazon.api.stock.domain.util.DomainConstants;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -62,6 +66,17 @@ public class CreateCategoryUseCase implements ICategoryServicePort {
 //        return categoryDTO;
         return categoryDTO;
     }
+
+    @Override
+    public List<CategoryDomain> getAllCategories() {
+        var categoriesListDomain=iCategoryPerssistencePort.getAllCategories();
+        return categoriesListDomain;
+    }
+
+//    @Override
+//    public Page<CategoryDomain> findAll(Pageable paginacion) {
+//        return null;
+//    }
 
 
     public Boolean validateferenceByName(String name) {
