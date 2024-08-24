@@ -2,12 +2,10 @@ package com.emazon.api.stock.infrastructure.controller;
 
 import com.emazon.api.stock.aplication.dto.category.CategoryDTO;
 import com.emazon.api.stock.aplication.handler.ICategoryHandler;
-import com.emazon.api.stock.infrastructure.repository.ICategoryRepositrory;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.support.PagedListHolder;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -25,9 +23,6 @@ import java.util.List;
 public class CategoryController {
 
     private ICategoryHandler iCategoryHandler;
-    @Autowired
-    private ICategoryRepositrory iCategoryRepositrory;
-
     public CategoryController(ICategoryHandler iCategoryHandler) {
         this.iCategoryHandler = iCategoryHandler;
     }
@@ -48,12 +43,7 @@ public class CategoryController {
         return ResponseEntity.ok(category);
     }
 
-//    @GetMapping("/getallcategories")
-//    public ResponseEntity<Page<CategoryDTO>> categoryList(@PageableDefault(size = 10,sort = {"name"}) Pageable paginacion){
-//        var page = iCategoryRepositrory.findAll(paginacion).map(CategoryDTO::new);
-//        return ResponseEntity.ok(page);
-//    }
-//@PageableDefault(size = 10,sort = {"name"}) Pageable paginacion
+        //@PageableDefault(size = 10,sort = {"name"}) Pageable paginacion
         @GetMapping("/getallcategories")
          public ResponseEntity<Page<CategoryDTO>> categoryList(@PageableDefault(size = 10,sort = {"name"}) Pageable paginacion){
             var categoryListDto = iCategoryHandler.getAllCategories();
@@ -71,14 +61,7 @@ public class CategoryController {
         return new PageImpl<>(subList,pageable,objectList.size());
     }
 
-//    @PutMapping
-//    @Transactional
-//    public ResponseEntity updateCategory(@RequestBody @Valid UpdateDateCategoryDTO date){
-//        var category=repository.getReferenceById(date.id());
-//        category.UpdateDateCategory(date);
-//        return ResponseEntity.ok("The category is update satisfactory: " +new CategoryDatesDTO(category));
-//    }
-//
+
 
 
 
