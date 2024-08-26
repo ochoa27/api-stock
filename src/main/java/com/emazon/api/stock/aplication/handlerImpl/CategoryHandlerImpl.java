@@ -46,6 +46,26 @@ public class CategoryHandlerImpl implements ICategoryHandler {
         return cateriesList;
     }
 
+    @Override
+    public List<CategoryDTO> toProductResponseList(String name, Integer page, Integer size) {
+        var categoriesList=iCategoryResponseMapper.toCategoryDomainToCategoryDto(iCategoryServicePort.getAllCategoriesByName(name, page, size));
+        return categoriesList;
+    }
+
+    @Override
+    public List<CategoryDTO> getCategoryAll(Pageable paginacion) {
+        var categoriesList = iCategoryResponseMapper.categoryListDomainToCategoryListDto(iCategoryServicePort.getCategoryAll(paginacion));
+        return categoriesList;
+    }
+
+    public Page<CategoryDTO> getCategoryDtoPage(Page<CategoryDomain> categoryDomainPage) {
+        return categoryDomainPage.map(iCategoryResponseMapper::categoryDomainToCategoryDto);
+    }
+
+
+
+
+
 //    @Override
 //    public Page<CategoryDomain> findAll(Pageable paginacion) {
 //        var categoryPage=iCategoryServicePort.findAll(paginacion);

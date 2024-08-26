@@ -3,10 +3,11 @@ package com.emazon.api.stock.infrastructure.mapper;
 import com.emazon.api.stock.aplication.dto.category.CategoryDTO;
 import com.emazon.api.stock.domain.model.CategoryDomain;
 import com.emazon.api.stock.infrastructure.entities.CategoryEntity;
-import org.springframework.data.domain.Page;
+
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class CategoryMapper {
 
@@ -59,4 +60,30 @@ public class CategoryMapper {
 
 
     }
+
+//    public static Page<CategoryDomain> CategoryEntityPageToCategoryDomainPage(Page<CategoryEntity> categoryEntityPage) {
+//        if (categoryEntityPage == null) {
+//            return null;
+//        } else {
+//            Page<CategoryDomain> categoryDomainPage = new Page<CategoryDomain>() {
+//            };
+//            for (CategoryEntity entity : categoryEntityPage) {
+//                categoryDomainPage.add(EntitytoDomain(entity));
+//
+//            }
+//            return categoryDomainPage;
+//        }
+//    }
+//    public static Page<CategoryDomain> CategoryEntityPageToCategoryDomainPage(Page<CategoryEntity> categoryEntityPage) {
+//        if (categoryEntityPage == null) {
+//            return null;
+//        } else {
+//            List<CategoryDomain> categoryDomainList = categoryEntityPage.stream()
+//                    .map(CategoryMapper::EntitytoDomain) // Asumiendo que tienes un método de mapeo estático EntitytoDomain
+//                    .collect(Collectors.toList());
+//
+//            // Usamos PageImpl para crear un Page<CategoryDomain> con la lista y la información de paginación
+//            return new PageImpl<>(categoryDomainList, PageRequest.of(categoryEntityPage.getNumber(), categoryEntityPage.getSize()), categoryEntityPage.getTotalElements());
+//        }
+//    }
 }

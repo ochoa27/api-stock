@@ -3,13 +3,14 @@ package com.emazon.api.stock.domain.usecase;
 import com.emazon.api.stock.aplication.dto.category.CategoryDTO;
 import com.emazon.api.stock.domain.api.ICategoryServicePort;
 
+import com.emazon.api.stock.domain.exception.CategoryNullPointerException;
 import com.emazon.api.stock.domain.model.CategoryDomain;
 import com.emazon.api.stock.domain.spi.ICategoryPerssistencePort;
 import com.emazon.api.stock.domain.util.DomainConstants;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+
 
 import java.util.List;
 
@@ -19,12 +20,16 @@ public class CreateCategoryUseCase implements ICategoryServicePort {
     private ICategoryPerssistencePort iCategoryPerssistencePort;
 
 
-    public Boolean verifyNameLength(CategoryDomain categoryDomain){
-        if(categoryDomain.getName().length()<1 || categoryDomain.getName().length()>50){
-            System.out.println(DomainConstants.RETURN_CATEGORY_CREATED_ERROR_NAME);
-            return false;
+    public Boolean verifyCategoryName(CategoryDomain categoryDomain){
+        if(categoryDomain.getName()==null){
+            throw new CategoryNullPointerException(DomainConstants.RETURN_CATEGORY_CREATED_ERROR_NAME_NULL);
         }else {
-            return true;
+            if(categoryDomain.getName().length()<1 || categoryDomain.getName().length()>50){
+                System.out.println(DomainConstants.RETURN_CATEGORY_CREATED_ERROR_NAME);
+                return false;
+            }else {
+                return true;
+            }
         }
     }
     public Boolean verifyDescriptionLength(CategoryDomain categoryDomain) {
@@ -73,6 +78,17 @@ public class CreateCategoryUseCase implements ICategoryServicePort {
         return categoriesListDomain;
     }
 
+    @Override
+    public List<CategoryDomain> getAllCategoriesByName(String name, Integer page, Integer size) {
+        return iCategoryPerssistencePort.getAllCategoriesByName(name, page, size);
+    }
+
+    @Override
+    public List<CategoryDomain> getCategoryAll(Pageable paginacion) {
+        return iCategoryPerssistencePort.categoryAll(paginacion);
+    }
+
+
 //    @Override
 //    public Page<CategoryDomain> findAll(Pageable paginacion) {
 //        return null;
@@ -91,7 +107,7 @@ public class CreateCategoryUseCase implements ICategoryServicePort {
 
     @Override
     public String createCategory(CategoryDomain categoryDomain) {
-        if(categoryDomain!=null && verifyDescriptionLength(categoryDomain) && verifyNameLength(categoryDomain) && verifyDescriptionExist(categoryDomain) && verifyNameExist(categoryDomain)){
+        if(categoryDomain!=null && verifyDescriptionLength(categoryDomain) && verifyCategoryName(categoryDomain) && verifyDescriptionExist(categoryDomain) && verifyNameExist(categoryDomain)){
             if(validateferenceByName(categoryDomain.getName())){
                 iCategoryPerssistencePort.saveCategory(categoryDomain);
                 return DomainConstants.RETURN_CATEGORY_CREATE;

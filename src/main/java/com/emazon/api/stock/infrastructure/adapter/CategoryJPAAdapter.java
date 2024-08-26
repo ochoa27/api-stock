@@ -9,6 +9,7 @@ import com.emazon.api.stock.infrastructure.mapper.CategoryMapper;
 import com.emazon.api.stock.infrastructure.repository.ICategoryRepositrory;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
@@ -42,6 +43,20 @@ public class CategoryJPAAdapter implements ICategoryPerssistencePort {
     public List<CategoryDomain> getAllCategories() {
         var listCategory=iCategoryRepositrory.findAll();
         return CategoryMapper.CategoryEntityListToCategoryDomainList(listCategory);
+    }
+
+    @Override
+    public List<CategoryDomain> getAllCategoriesByName(String name, Integer page, Integer size) {
+        Pageable pagination = PageRequest.of(page, size);
+        List<CategoryEntity> products = iCategoryRepositrory.findAllByName(name, pagination).getContent();
+
+        return CategoryMapper.CategoryEntityListToCategoryDomainList(products);
+    }
+
+    @Override
+    public List<CategoryDomain> categoryAll(Pageable paginacion) {
+        List<CategoryEntity> categoryEntityList=iCategoryRepositrory.findAll(paginacion).getContent();
+        return CategoryMapper.CategoryEntityListToCategoryDomainList(categoryEntityList);
     }
 
 

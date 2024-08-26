@@ -1,7 +1,6 @@
 package com.emazon.api.stock.aplication.handler;
 
 import com.emazon.api.stock.aplication.dto.category.CategoryDTO;
-import com.emazon.api.stock.domain.model.CategoryDomain;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -14,4 +13,6 @@ public interface ICategoryHandler  {
 
 //    Page<CategoryDomain> findAll(Pageable paginacion);
     List<CategoryDTO> getAllCategories();
+    List<CategoryDTO>toProductResponseList(String name, Integer page, Integer size);
+    List<CategoryDTO> getCategoryAll(Pageable paginacion);
 }

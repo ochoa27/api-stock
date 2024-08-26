@@ -15,6 +15,8 @@ public interface ICategoryPerssistencePort {
     CategoryDomain getReferenceById(Long id);
     CategoryDTO getReferenceByName(String name);
     List<CategoryDomain> getAllCategories();
+    List<CategoryDomain>getAllCategoriesByName(String name, Integer page, Integer size);
+    List<CategoryDomain> categoryAll(Pageable paginacion);
 //    Boolean getReferenceByName(String name);
 
 
