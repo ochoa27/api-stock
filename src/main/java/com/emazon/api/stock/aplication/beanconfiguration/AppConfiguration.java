@@ -3,6 +3,7 @@ package com.emazon.api.stock.aplication.beanconfiguration;
 import com.emazon.api.stock.aplication.handler.ICategoryHandler;
 import com.emazon.api.stock.aplication.handlerImpl.CategoryHandlerImpl;
 import com.emazon.api.stock.aplication.mapper.ICategoryMapper;
+import com.emazon.api.stock.aplication.mapper.response.ICategoryResponseMapper;
 import com.emazon.api.stock.domain.api.ICategoryServicePort;
 import com.emazon.api.stock.domain.spi.ICategoryPerssistencePort;
 import com.emazon.api.stock.domain.usecase.CreateCategoryUseCase;
@@ -16,8 +17,8 @@ public class AppConfiguration {
 
 
     @Bean
-    ICategoryHandler iCategoryHandler(ICategoryServicePort iCategoryServicePort, ICategoryMapper iCategoryMapper){
-        return new CategoryHandlerImpl( iCategoryServicePort,iCategoryMapper);
+    ICategoryHandler iCategoryHandler(ICategoryServicePort iCategoryServicePort, ICategoryMapper iCategoryMapper, ICategoryResponseMapper iCategoryResponseMapper){
+        return new CategoryHandlerImpl( iCategoryServicePort,iCategoryMapper,iCategoryResponseMapper);
 }
 
     @Bean
@@ -29,6 +30,7 @@ public class AppConfiguration {
     ICategoryPerssistencePort iCategoryPerssistencePort( ICategoryRepositrory iCategoryRepositrory){
         return new CategoryJPAAdapter(iCategoryRepositrory);
     }
+
 
 
 
