@@ -12,7 +12,7 @@ public record CategoryDTO(Long id,
                                   @Size(max = 90,message = "El tamaño maximo de la descripocion debe ser  de 90 caracteres")
                                   String description) {
 
-    public CategoryDTO(CategoryEntity category) {
-        this(category.getId(), category.getName(), category.getDescription());
-    }
+//    public CategoryDTO(CategoryEntity category) {
+//        this(category.getId(), category.getName(), category.getDescription());
+//    }
 }

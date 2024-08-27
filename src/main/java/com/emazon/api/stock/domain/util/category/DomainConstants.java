@@ -1,4 +1,4 @@
-package com.emazon.api.stock.domain.util;
+package com.emazon.api.stock.domain.util.category;
 
 public class DomainConstants {
 

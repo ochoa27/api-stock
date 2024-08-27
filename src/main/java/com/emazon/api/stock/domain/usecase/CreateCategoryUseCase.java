@@ -6,7 +6,7 @@ import com.emazon.api.stock.domain.api.ICategoryServicePort;
 import com.emazon.api.stock.domain.exception.CategoryNullPointerException;
 import com.emazon.api.stock.domain.model.CategoryDomain;
 import com.emazon.api.stock.domain.spi.ICategoryPerssistencePort;
-import com.emazon.api.stock.domain.util.DomainConstants;
+import com.emazon.api.stock.domain.util.category.DomainConstants;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.data.domain.Pageable;
