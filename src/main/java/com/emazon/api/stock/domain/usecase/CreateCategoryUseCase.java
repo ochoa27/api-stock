@@ -18,13 +18,17 @@ import java.util.List;
 @NoArgsConstructor
 public class CreateCategoryUseCase implements ICategoryServicePort {
     private ICategoryPerssistencePort iCategoryPerssistencePort;
+    private static final  Integer MINIMUN_VALOR =1;
+    private static final Integer MAX_VALOR_OF_DESCRIPTION =90;
+    private static final Integer MAX_VALOR_OF_NAME =90;
+
 
 
     public Boolean verifyCategoryName(CategoryDomain categoryDomain){
         if(categoryDomain.getName()==null){
             throw new CategoryNullPointerException(DomainConstants.RETURN_CATEGORY_CREATED_ERROR_NAME_NULL);
         }else {
-            if(categoryDomain.getName().length()<1 || categoryDomain.getName().length()>50){
+            if(categoryDomain.getName().length()< MINIMUN_VALOR || categoryDomain.getName().length()> MAX_VALOR_OF_NAME){
                 System.out.println(DomainConstants.RETURN_CATEGORY_CREATED_ERROR_NAME);
                 return false;
             }else {
@@ -32,12 +36,16 @@ public class CreateCategoryUseCase implements ICategoryServicePort {
             }
         }
     }
-    public Boolean verifyDescriptionLength(CategoryDomain categoryDomain) {
-        if (categoryDomain.getDescription().length() <1  || categoryDomain.getDescription().length() > 90) {
-            System.out.println(DomainConstants.RETURN_CATEGORY_CREATED_ERROR_DESCRIPTION);
-            return false;
+    public Boolean verifyCateryDescription(CategoryDomain categoryDomain) {
+        if (categoryDomain.getName() == null) {
+            throw new CategoryNullPointerException(DomainConstants.RETURN_CATEGORY_CREATED_ERROR_DESCRIPTION_NULL);
         } else {
-            return true;
+            if (categoryDomain.getDescription().length() < MINIMUN_VALOR || categoryDomain.getDescription().length() > MAX_VALOR_OF_DESCRIPTION) {
+                System.out.println(DomainConstants.RETURN_CATEGORY_CREATED_ERROR_DESCRIPTION);
+                return false;
+            } else {
+                return true;
+            }
         }
     }
 
@@ -74,8 +82,7 @@ public class CreateCategoryUseCase implements ICategoryServicePort {
 
     @Override
     public List<CategoryDomain> getAllCategories() {
-        var categoriesListDomain=iCategoryPerssistencePort.getAllCategories();
-        return categoriesListDomain;
+        return iCategoryPerssistencePort.getAllCategories();
     }
 
     @Override
@@ -87,13 +94,6 @@ public class CreateCategoryUseCase implements ICategoryServicePort {
     public List<CategoryDomain> getCategoryAll(Pageable paginacion) {
         return iCategoryPerssistencePort.categoryAll(paginacion);
     }
-
-
-//    @Override
-//    public Page<CategoryDomain> findAll(Pageable paginacion) {
-//        return null;
-//    }
-
 
     public Boolean validateferenceByName(String name) {
      var category=iCategoryPerssistencePort.getReferenceByName(name);
@@ -107,7 +107,7 @@ public class CreateCategoryUseCase implements ICategoryServicePort {
 
     @Override
     public String createCategory(CategoryDomain categoryDomain) {
-        if(categoryDomain!=null && verifyDescriptionLength(categoryDomain) && verifyCategoryName(categoryDomain) && verifyDescriptionExist(categoryDomain) && verifyNameExist(categoryDomain)){
+        if(categoryDomain!=null && verifyCateryDescription(categoryDomain) && verifyCategoryName(categoryDomain) && verifyDescriptionExist(categoryDomain) && verifyNameExist(categoryDomain)){
             if(validateferenceByName(categoryDomain.getName())){
                 iCategoryPerssistencePort.saveCategory(categoryDomain);
                 return DomainConstants.RETURN_CATEGORY_CREATE;
@@ -123,8 +123,7 @@ public class CreateCategoryUseCase implements ICategoryServicePort {
 
     @Override
     public CategoryDomain getReferenceById(Long id) {
-         var category= iCategoryPerssistencePort.getReferenceById(id);
-        return category;
+        return iCategoryPerssistencePort.getReferenceById(id);
     }
 
 

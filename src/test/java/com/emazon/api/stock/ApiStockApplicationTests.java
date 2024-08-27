@@ -15,7 +15,7 @@ class ApiStockApplicationTests {
 		CategoryDomain categoryDomain=new CategoryDomain(20L,"refrigerados","productos refrigerados");
 		CreateCategoryUseCase categoryUseCase =new CreateCategoryUseCase();
 		final Boolean verifyNameLength=categoryUseCase.verifyCategoryName(categoryDomain);
-		final Boolean verifyDescriptionLength=categoryUseCase.verifyDescriptionLength(categoryDomain);
+		final Boolean verifyDescriptionLength=categoryUseCase.verifyCateryDescription(categoryDomain);
 		Assertions.assertTrue(verifyNameLength);
 		Assertions.assertFalse(!verifyNameLength);
 		Assertions.assertTrue(verifyDescriptionLength);
@@ -29,7 +29,7 @@ class ApiStockApplicationTests {
 				"");
 		CreateCategoryUseCase categoryUseCase =new CreateCategoryUseCase();
 		final Boolean verifyNameLength=categoryUseCase.verifyCategoryName(categoryDomain);
-		final Boolean verifyDescriptionLength=categoryUseCase.verifyDescriptionLength(categoryDomain);
+		final Boolean verifyDescriptionLength=categoryUseCase.verifyCateryDescription(categoryDomain);
 		Assertions.assertTrue(!verifyNameLength);
 		Assertions.assertFalse(verifyNameLength);
 		Assertions.assertTrue(!verifyDescriptionLength);

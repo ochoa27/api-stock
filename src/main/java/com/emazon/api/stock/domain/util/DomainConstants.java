@@ -13,4 +13,5 @@ public class DomainConstants {
     public static final String RETURN_CATEGORY_CREATED_ERROR_NAME_REPEATED="This category already exists ";
     public static final String RETURN_CATEGORY_CREATED_ERROR_DESCRIPTION_EMPTY = "This category need the description";
     public static final String RETURN_CATEGORY_CREATED_ERROR_NAME_EMPTY ="This category need the name" ;
+    public static final String RETURN_CATEGORY_CREATED_ERROR_DESCRIPTION_NULL = "This category description is compulsory ";
 }
