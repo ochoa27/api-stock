@@ -37,13 +37,14 @@ public class CategoryController {
         return  ResponseEntity.ok(category);
     }
 
-    @Operation(summary = "Get category", description = "this method register a category obtain a category that exist in the database")
+    @Operation(summary = "Get category", description = "this method  obtain a category that exist in the database")
     @GetMapping("/obtCategory/{id}")
     public ResponseEntity obtCategory(@PathVariable Long id) {
         var category=iCategoryHandler.getReferenceById(id);
         return ResponseEntity.ok(category);
     }
 
+    @Operation(summary = "GetPageOfCategoryASC", description = "this method  obtain a  page of category that exist in the database in ascend form")
     @GetMapping("/getcategories/ascending")
     public ResponseEntity<List<CategoryDTO>> getCategoryAllASC(@PageableDefault(size = 10) Pageable paginacion) {
         Sort sort = Sort.by("name").ascending();
@@ -51,7 +52,7 @@ public class CategoryController {
         return ResponseEntity.ok((iCategoryHandler.getCategoryAll(pageableWithSort)));
     }
 
-
+    @Operation(summary = "GetPageOfCategoryDESC", description = "this method  obtain a  page of category that exist in the database in descend form")
     @GetMapping("/getcategories/descending")
     public ResponseEntity<List<CategoryDTO>> getCategoryAllDESC(@PageableDefault(size = 10) Pageable paginacion) {
         Sort sort = Sort.by("name").descending();
