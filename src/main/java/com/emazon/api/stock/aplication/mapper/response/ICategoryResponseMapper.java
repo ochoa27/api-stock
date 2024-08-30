@@ -20,5 +20,4 @@ public interface ICategoryResponseMapper {
     CategoryDTO categoryDomainToCategoryDto(CategoryDomain categoryDomain);
     List<CategoryDTO> categoryListDomainToCategoryListDto(List<CategoryDomain> categoryDomainList);
     List<CategoryDTO> toCategoryDomainToCategoryDto(List<CategoryDomain> categoryDomainList);
-//    Page<CategoryDTO> categoryPageDomainToCategoryPageDto(Page<CategoryDomain> categoryDomainPage);
 }

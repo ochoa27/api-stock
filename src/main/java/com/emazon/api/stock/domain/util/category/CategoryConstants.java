@@ -1,6 +1,6 @@
 package com.emazon.api.stock.domain.util.category;
 
-public class DomainConstants {
+public class CategoryConstants {
 
     public  static final String RETURN_CATEGORY_CREATE="Category created successfully";
     public  static final String RETURN_CATEGORY_DELETE="Category delete successfully";

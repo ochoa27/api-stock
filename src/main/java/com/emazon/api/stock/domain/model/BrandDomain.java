@@ -3,6 +3,7 @@ package com.emazon.api.stock.domain.model;
 import lombok.Getter;
 import lombok.Setter;
 
+
 @Getter
 @Setter
 public class BrandDomain {

@@ -19,10 +19,9 @@ public class CategoryJPAAdapter implements ICategoryPerssistencePort {
 
     @Override
     public String saveCategory(CategoryDomain categoryDomain) {
-        CategoryEntity categoryEntity= CategoryMapper.domianToEntity(categoryDomain);
-//        var categoriaEntity= new CategoryEntity(categoryregisterDTO.id(),categoryregisterDTO.name(),categoryregisterDTO.description());
+        CategoryEntity categoryEntity= CategoryMapper.domainToEntity(categoryDomain);
         iCategoryRepositrory.save(categoryEntity);
-        return "La categoria se guardo en la base de datos";
+        return "the category is save in database";
     }
 
     @Override

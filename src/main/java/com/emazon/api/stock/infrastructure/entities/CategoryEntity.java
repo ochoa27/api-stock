@@ -1,6 +1,5 @@
 package com.emazon.api.stock.infrastructure.entities;
 
-import com.emazon.api.stock.aplication.dto.category.CategoryDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -19,17 +18,5 @@ public class CategoryEntity {
     private String name;
     private String description;
 
-    public CategoryEntity(CategoryDTO category){
-        this.name= category.name();
-        this.description= category.description();
-    }
 
-    public void UpdateDateCategory(CategoryDTO date) {
-        if (date.name()!=null){
-            this.name= date.name();
-        }
-        if (date.description()!=null){
-            this.description= date.description();
-        }
-    }
 }
