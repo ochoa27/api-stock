@@ -20,7 +20,7 @@ public class CreateCategoryUseCase implements ICategoryServicePort {
     private ICategoryPerssistencePort iCategoryPerssistencePort;
     private static final  Integer MINIMUN_VALOR =1;
     private static final Integer MAX_VALOR_OF_DESCRIPTION =90;
-    private static final Integer MAX_VALOR_OF_NAME =90;
+    private static final Integer MAX_VALOR_OF_NAME =50;
 
 
 
@@ -37,7 +37,7 @@ public class CreateCategoryUseCase implements ICategoryServicePort {
         }
     }
     public Boolean verifyCateryDescription(CategoryDomain categoryDomain) {
-        if (categoryDomain.getName() == null) {
+        if (categoryDomain.getDescription() == null) {
             throw new CategoryNullPointerException(CategoryConstants.RETURN_CATEGORY_CREATED_ERROR_DESCRIPTION_NULL);
         } else {
             if (categoryDomain.getDescription().length() < MINIMUN_VALOR || categoryDomain.getDescription().length() > MAX_VALOR_OF_DESCRIPTION) {
@@ -46,25 +46,6 @@ public class CreateCategoryUseCase implements ICategoryServicePort {
             } else {
                 return true;
             }
-        }
-    }
-
-
-    public Boolean verifyDescriptionExist(CategoryDomain categoryDomain){
-        if(categoryDomain.getDescription()==null){
-            System.out.println(CategoryConstants.RETURN_CATEGORY_CREATED_ERROR_DESCRIPTION_EMPTY);
-            return false;
-        }else {
-            return true;
-        }
-    }
-
-    public Boolean verifyNameExist(CategoryDomain categoryDomain){
-        if(categoryDomain.getName()==null){
-            System.out.println(CategoryConstants.RETURN_CATEGORY_CREATED_ERROR_NAME_EMPTY);
-            return false;
-        }else {
-            return true;
         }
     }
 
@@ -107,12 +88,12 @@ public class CreateCategoryUseCase implements ICategoryServicePort {
 
     @Override
     public String createCategory(CategoryDomain categoryDomain) {
-        if(categoryDomain!=null && verifyCateryDescription(categoryDomain) && verifyCategoryName(categoryDomain) && verifyDescriptionExist(categoryDomain) && verifyNameExist(categoryDomain)){
+        if(categoryDomain!=null && verifyCateryDescription(categoryDomain) && verifyCategoryName(categoryDomain)){
             if(validateferenceByName(categoryDomain.getName())){
                 iCategoryPerssistencePort.saveCategory(categoryDomain);
                 return CategoryConstants.RETURN_CATEGORY_CREATE;
             }else{
-                return CategoryConstants.RETURN_CATEGORY_CREATED_ERROR_NAME_REPEATED;
+                return CategoryConstants.RETURN_CATEGORY_CREATED_ERROR_SAME_NAME;
             }
 
         }else{

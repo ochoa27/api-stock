@@ -1,7 +1,9 @@
 package com.emazon.api.stock.infrastructure.mapper;
 
 import com.emazon.api.stock.domain.model.BrandDomain;
+import com.emazon.api.stock.domain.model.CategoryDomain;
 import com.emazon.api.stock.infrastructure.entities.BrandEntity;
+import com.emazon.api.stock.infrastructure.entities.CategoryEntity;
 
 public class BrandMapper {
 
@@ -15,4 +17,13 @@ public class BrandMapper {
         brandEntity.setDescription(brandDomain.getDescription());
         return brandEntity;
     }
+
+    public static BrandDomain entitytoDomain(BrandEntity brandEntity) {
+        if (brandEntity == null) {
+            return null;
+        }
+        BrandDomain brandDomain = new BrandDomain(brandEntity.getId(), brandEntity.getName(), brandEntity.getDescription());
+        return brandDomain;
+    }
+
 }

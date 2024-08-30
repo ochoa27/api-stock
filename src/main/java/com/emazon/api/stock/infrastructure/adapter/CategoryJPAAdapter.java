@@ -31,9 +31,8 @@ public class CategoryJPAAdapter implements ICategoryPerssistencePort {
     }
 
     @Override
-    public CategoryDTO getReferenceByName(String name) {
-        var category=CategoryMapper.entityToDTO(iCategoryRepositrory.findByName(name));
-        return category;
+    public CategoryDomain getReferenceByName(String name) {
+        return CategoryMapper.EntitytoDomain(iCategoryRepositrory.findByName(name));
     }
 
     @Override
