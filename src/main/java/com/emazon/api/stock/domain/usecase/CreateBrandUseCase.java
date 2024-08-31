@@ -1,7 +1,7 @@
 package com.emazon.api.stock.domain.usecase;
 
 import com.emazon.api.stock.domain.api.IBrandServicePort;
-import com.emazon.api.stock.domain.exception.CategoryNullPointerException;
+import com.emazon.api.stock.domain.exception.BrandNullPointerException;
 import com.emazon.api.stock.domain.model.BrandDomain;
 import com.emazon.api.stock.domain.spi.IBrandPersistencePort;
 import com.emazon.api.stock.domain.util.brand.Brandconstants;
@@ -19,7 +19,7 @@ public class CreateBrandUseCase implements IBrandServicePort {
 
     public Boolean verifyBrandName(BrandDomain brandDomain){
         if(brandDomain.getName()==null){
-            throw new CategoryNullPointerException(Brandconstants.RETURN_BRAND_CREATED_ERROR_NAME_NULL);
+            throw new BrandNullPointerException(Brandconstants.RETURN_BRAND_CREATED_ERROR_NAME_NULL);
         }else {
             if(brandDomain.getName().length()< MINIMUN_VALOR || brandDomain.getName().length()> MAX_VALOR_OF_NAME){
                 System.out.println(Brandconstants.RETURN_BRAND_CREATED_ERROR_NAME);
@@ -31,7 +31,7 @@ public class CreateBrandUseCase implements IBrandServicePort {
     }
     public Boolean verifyCateryDescription(BrandDomain brandDomain) {
         if (brandDomain.getDescription() == null) {
-            throw new CategoryNullPointerException(Brandconstants.RETURN_BRAND_CREATED_ERROR_DESCRIPTION_NULL);
+            throw new BrandNullPointerException(Brandconstants.RETURN_BRAND_CREATED_ERROR_DESCRIPTION_NULL);
         } else {
             if (brandDomain.getDescription().length() < MINIMUN_VALOR || brandDomain.getDescription().length() > MAX_VALOR_OF_DESCRIPTION) {
                 System.out.println(Brandconstants.RETURN_BRAND_CREATED_ERROR_DESCRIPTION);
@@ -42,7 +42,7 @@ public class CreateBrandUseCase implements IBrandServicePort {
         }
     }
 
-    public Boolean validateferenceByName(String name) {
+    public Boolean validateBrandByName(String name) {
         var brand=iBrandPersistencePort.getReferenceByName(name);
         if (brand==null){
             return true;
@@ -54,7 +54,7 @@ public class CreateBrandUseCase implements IBrandServicePort {
     @Override
     public String createBrand(BrandDomain brandDomain) {
         if (brandDomain!=null && verifyBrandName(brandDomain) && verifyCateryDescription(brandDomain)){
-            if (validateferenceByName(brandDomain.getName())){
+            if (validateBrandByName(brandDomain.getName())){
                 iBrandPersistencePort.saveBrand(brandDomain);
                 return Brandconstants.RETURN_BRAND_CREATE;
             }else {
