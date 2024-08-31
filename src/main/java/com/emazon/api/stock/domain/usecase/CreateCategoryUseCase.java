@@ -51,14 +51,7 @@ public class CreateCategoryUseCase implements ICategoryServicePort {
 
     @Override
     public CategoryDTO getReferenceByName(String name) {
-        CategoryDTO categoryDTO = null;
-//        try {
-//            categoryDTO = new CategoryDTO(CategoryMapper.toEntity(iCategoryPerssistencePort.getReferenceByName(name)));
-//        } catch (NullPointerException e) {
-//            System.out.println(e.getMessage());
-//        }
-//        return categoryDTO;
-        return categoryDTO;
+        return null;
     }
 
     @Override
