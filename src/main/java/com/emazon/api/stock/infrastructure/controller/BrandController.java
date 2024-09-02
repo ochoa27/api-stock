@@ -2,9 +2,7 @@ package com.emazon.api.stock.infrastructure.controller;
 
 
 import com.emazon.api.stock.aplication.dto.brand.BrandDTO;
-import com.emazon.api.stock.aplication.dto.category.CategoryDTO;
 import com.emazon.api.stock.aplication.handler.IBrandHandler;
-import com.emazon.api.stock.domain.exception.BrandNullPointerException;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.transaction.Transactional;

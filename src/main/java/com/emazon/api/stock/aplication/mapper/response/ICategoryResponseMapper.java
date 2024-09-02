@@ -5,7 +5,6 @@ import com.emazon.api.stock.domain.model.CategoryDomain;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
-import org.springframework.data.domain.Page;
 
 import java.util.List;
 

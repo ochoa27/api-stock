@@ -14,11 +14,7 @@ public class ErrorHandler {
 
     public static final String INTERNAL_ERROR_CUSTOM_MESSAGE = "No puede ser null el campo nombre";
 
-//    @ExceptionHandler(BrandNullPointerException.class) //checkForEveryException
-//    @ResponseStatus(code = HttpStatus.BAD_REQUEST , reason = "Error completando campos")
-//    public void everyException(BrandNullPointerException e) {
-//        log.info(e.getMessage());
-//    }
+
 
     @ExceptionHandler({ BrandNullPointerException.class })
     public ResponseEntity<Object> handleGlobalException(BrandNullPointerException exception) {

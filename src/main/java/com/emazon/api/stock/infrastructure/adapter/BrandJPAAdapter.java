@@ -1,7 +1,6 @@
 package com.emazon.api.stock.infrastructure.adapter;
 
 import com.emazon.api.stock.domain.model.BrandDomain;
-import com.emazon.api.stock.domain.model.CategoryDomain;
 import com.emazon.api.stock.domain.spi.IBrandPersistencePort;
 import com.emazon.api.stock.infrastructure.entities.BrandEntity;
 import com.emazon.api.stock.infrastructure.mapper.BrandMapper;
