@@ -62,17 +62,6 @@ public class CategoryHandlerImpl implements ICategoryHandler {
         return categoryDomainPage.map(iCategoryResponseMapper::categoryDomainToCategoryDto);
     }
 
-
-
-
-
-//    @Override
-//    public Page<CategoryDomain> findAll(Pageable paginacion) {
-//        var categoryPage=iCategoryServicePort.findAll(paginacion);
-//        return categoryPage;
-//    }
-
-
 }
 
 

@@ -6,8 +6,6 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
-import org.hibernate.query.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -15,7 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.data.domain.Sort;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 @RestController
@@ -33,8 +31,13 @@ public class CategoryController {
     @PostMapping("/save")
     @Transactional
     public ResponseEntity createCategory(@RequestBody @Valid CategoryDTO categoryRegister){
-        var category=iCategoryHandler.createCategory(categoryRegister);
-        return  ResponseEntity.ok(category);
+        try {
+            var category=iCategoryHandler.createCategory(categoryRegister);
+            return  ResponseEntity.ok(category);
+        }catch (Exception e){
+            return ResponseEntity.ofNullable(e.getMessage());
+        }
+
     }
 
     @Operation(summary = "Get category", description = "this method  obtain a category that exist in the database")

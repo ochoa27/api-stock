@@ -5,7 +5,6 @@ import com.emazon.api.stock.domain.model.CategoryDomain;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
-import org.springframework.data.domain.Page;
 
 import java.util.List;
 
@@ -20,5 +19,4 @@ public interface ICategoryResponseMapper {
     CategoryDTO categoryDomainToCategoryDto(CategoryDomain categoryDomain);
     List<CategoryDTO> categoryListDomainToCategoryListDto(List<CategoryDomain> categoryDomainList);
     List<CategoryDTO> toCategoryDomainToCategoryDto(List<CategoryDomain> categoryDomainList);
-//    Page<CategoryDTO> categoryPageDomainToCategoryPageDto(Page<CategoryDomain> categoryDomainPage);
 }

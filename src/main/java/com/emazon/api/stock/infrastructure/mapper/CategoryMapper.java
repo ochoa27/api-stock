@@ -20,7 +20,7 @@ public class CategoryMapper {
         return categoryDatesDTO;
     }
 
-    public static CategoryEntity domianToEntity(CategoryDomain categoryDomain) {
+    public static CategoryEntity domainToEntity(CategoryDomain categoryDomain) {
         if (categoryDomain == null) {
             return null;
         }

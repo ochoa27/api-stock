@@ -1,14 +1,11 @@
 package com.emazon.api.stock.infrastructure.adapter;
 
-import com.emazon.api.stock.aplication.dto.category.CategoryDTO;
-import com.emazon.api.stock.aplication.mapper.response.ICategoryResponseMapper;
 import com.emazon.api.stock.domain.model.CategoryDomain;
 import com.emazon.api.stock.domain.spi.ICategoryPerssistencePort;
 import com.emazon.api.stock.infrastructure.entities.CategoryEntity;
 import com.emazon.api.stock.infrastructure.mapper.CategoryMapper;
 import com.emazon.api.stock.infrastructure.repository.ICategoryRepositrory;
 import lombok.AllArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
@@ -21,10 +18,9 @@ public class CategoryJPAAdapter implements ICategoryPerssistencePort {
 
     @Override
     public String saveCategory(CategoryDomain categoryDomain) {
-        CategoryEntity categoryEntity= CategoryMapper.domianToEntity(categoryDomain);
-//        var categoriaEntity= new CategoryEntity(categoryregisterDTO.id(),categoryregisterDTO.name(),categoryregisterDTO.description());
+        CategoryEntity categoryEntity= CategoryMapper.domainToEntity(categoryDomain);
         iCategoryRepositrory.save(categoryEntity);
-        return "La categoria se guardo en la base de datos";
+        return "the category is save in database";
     }
 
     @Override
@@ -34,9 +30,8 @@ public class CategoryJPAAdapter implements ICategoryPerssistencePort {
     }
 
     @Override
-    public CategoryDTO getReferenceByName(String name) {
-        var category=CategoryMapper.entityToDTO(iCategoryRepositrory.findByName(name));
-        return category;
+    public CategoryDomain getReferenceByName(String name) {
+        return CategoryMapper.EntitytoDomain(iCategoryRepositrory.findByName(name));
     }
 
     @Override
@@ -58,17 +53,4 @@ public class CategoryJPAAdapter implements ICategoryPerssistencePort {
         List<CategoryEntity> categoryEntityList=iCategoryRepositrory.findAll(paginacion).getContent();
         return CategoryMapper.CategoryEntityListToCategoryDomainList(categoryEntityList);
     }
-
-
-//        @Override
-//    public Boolean getReferenceByName(String name) {
-//        var category=CategoryMapper.toDTO(iCategoryRepositrory.findByName(name));
-//        if (category==null){
-//            return false;
-//        }else{
-//            return true;
-//        }
-//    }
-
-
 }
