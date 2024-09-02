@@ -4,6 +4,7 @@ package com.emazon.api.stock.infrastructure.controller;
 import com.emazon.api.stock.aplication.dto.brand.BrandDTO;
 import com.emazon.api.stock.aplication.dto.category.CategoryDTO;
 import com.emazon.api.stock.aplication.handler.IBrandHandler;
+import com.emazon.api.stock.domain.exception.BrandNullPointerException;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.transaction.Transactional;
@@ -26,7 +27,7 @@ public class BrandController {
     @Operation(summary = "Register brand", description = "this method register a brand in the database")
     @PostMapping("/save")
     @Transactional
-    public ResponseEntity createBrand(@RequestBody @Valid BrandDTO brandDTO){
+    public ResponseEntity createBrand(@RequestBody @Valid BrandDTO brandDTO) {
         var brand=iBrandHandler.createBrand(brandDTO);
         return  ResponseEntity.ok(brand);
     }

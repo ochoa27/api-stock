@@ -31,8 +31,13 @@ public class CategoryController {
     @PostMapping("/save")
     @Transactional
     public ResponseEntity createCategory(@RequestBody @Valid CategoryDTO categoryRegister){
-        var category=iCategoryHandler.createCategory(categoryRegister);
-        return  ResponseEntity.ok(category);
+        try {
+            var category=iCategoryHandler.createCategory(categoryRegister);
+            return  ResponseEntity.ok(category);
+        }catch (Exception e){
+            return ResponseEntity.ofNullable(e.getMessage());
+        }
+
     }
 
     @Operation(summary = "Get category", description = "this method  obtain a category that exist in the database")

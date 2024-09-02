@@ -17,7 +17,7 @@ public class CreateBrandUseCase implements IBrandServicePort {
     private static final Integer MAX_VALOR_OF_DESCRIPTION =120;
     private static final Integer MAX_VALOR_OF_NAME =50;
 
-    public Boolean verifyBrandName(BrandDomain brandDomain){
+    public Boolean verifyBrandName(BrandDomain brandDomain) {
         if(brandDomain.getName()==null){
             throw new BrandNullPointerException(Brandconstants.RETURN_BRAND_CREATED_ERROR_NAME_NULL);
         }else {
@@ -29,7 +29,7 @@ public class CreateBrandUseCase implements IBrandServicePort {
             }
         }
     }
-    public Boolean verifyCateryDescription(BrandDomain brandDomain) {
+    public Boolean verifyCateryDescription(BrandDomain brandDomain)  {
         if (brandDomain.getDescription() == null) {
             throw new BrandNullPointerException(Brandconstants.RETURN_BRAND_CREATED_ERROR_DESCRIPTION_NULL);
         } else {

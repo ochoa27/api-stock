@@ -5,4 +5,6 @@ public class BrandNullPointerException extends  RuntimeException{
     public BrandNullPointerException(String message) {
         super(message);
     }
+
+
 }
