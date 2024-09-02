@@ -6,6 +6,7 @@ import com.emazon.api.stock.aplication.handlerImpl.BrandHandlerImpl;
 import com.emazon.api.stock.aplication.handlerImpl.CategoryHandlerImpl;
 import com.emazon.api.stock.aplication.mapper.ICategoryMapper;
 import com.emazon.api.stock.aplication.mapper.brand.IBrandMapper;
+import com.emazon.api.stock.aplication.mapper.response.IBrandResponseMapper;
 import com.emazon.api.stock.aplication.mapper.response.ICategoryResponseMapper;
 import com.emazon.api.stock.domain.api.IBrandServicePort;
 import com.emazon.api.stock.domain.api.ICategoryServicePort;
@@ -40,8 +41,8 @@ public class AppConfiguration {
     }
 
     @Bean
-    IBrandHandler iBrandHandler(IBrandServicePort iBrandServicePort, IBrandMapper iBrandMapper){
-        return new BrandHandlerImpl(iBrandServicePort,iBrandMapper);
+    IBrandHandler iBrandHandler(IBrandServicePort iBrandServicePort, IBrandMapper iBrandMapper, IBrandResponseMapper iBrandResponseMapper){
+        return new BrandHandlerImpl(iBrandServicePort,iBrandMapper, iBrandResponseMapper);
     }
 
     @Bean

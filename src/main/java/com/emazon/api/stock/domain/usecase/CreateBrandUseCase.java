@@ -7,6 +7,8 @@ import com.emazon.api.stock.domain.spi.IBrandPersistencePort;
 import com.emazon.api.stock.domain.util.brand.Brandconstants;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -62,5 +64,11 @@ public class CreateBrandUseCase implements IBrandServicePort {
             }
         }
             return Brandconstants.RETURN_ERROR_CREATED_BRAND;
+    }
+
+    @Override
+    public Page<BrandDomain> getBrandList(Pageable page) {
+        var brandList= iBrandPersistencePort.getBrandList(page);
+        return brandList;
     }
 }

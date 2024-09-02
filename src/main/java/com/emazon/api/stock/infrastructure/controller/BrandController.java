@@ -7,11 +7,15 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/brands")
@@ -28,6 +32,13 @@ public class BrandController {
     public ResponseEntity createBrand(@RequestBody @Valid BrandDTO brandDTO) {
         var brand=iBrandHandler.createBrand(brandDTO);
         return  ResponseEntity.ok(brand);
+    }
+
+    @GetMapping("/listofbrands")
+    public ResponseEntity<Page<BrandDTO>> getBrandList (){
+         final Pageable page = PageRequest.of(0,10, Sort.by(Sort.Direction.ASC,"name"));
+         var brandList=iBrandHandler.getBrandList(page);
+        return ResponseEntity.ok(brandList);
     }
 
 
