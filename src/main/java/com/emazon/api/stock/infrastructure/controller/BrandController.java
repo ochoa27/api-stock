@@ -11,11 +11,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
 @RequestMapping("/brands")
@@ -34,10 +32,18 @@ public class BrandController {
         return  ResponseEntity.ok(brand);
     }
 
-    @GetMapping("/listofbrands")
-    public ResponseEntity<Page<BrandDTO>> getBrandList (){
+    @Operation(summary = "Brand pagination", description = "this method obtain a pagination of brands in ascend form")
+    @GetMapping("/listofbrands/asc")
+    public ResponseEntity<Page<BrandDTO>> getBrandListAsc (){
          final Pageable page = PageRequest.of(0,10, Sort.by(Sort.Direction.ASC,"name"));
          var brandList=iBrandHandler.getBrandList(page);
+        return ResponseEntity.ok(brandList);
+    }
+    @Operation(summary = "Brand pagination", description = "this method obtain a pagination of brands in descend form")
+    @GetMapping("/listofbrands/desc")
+    public ResponseEntity<Page<BrandDTO>> getBrandListDesc (){
+        final Pageable page = PageRequest.of(0,10, Sort.by(Sort.Direction.DESC,"name"));
+        var brandList=iBrandHandler.getBrandList(page);
         return ResponseEntity.ok(brandList);
     }
 
